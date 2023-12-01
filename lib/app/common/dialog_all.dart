@@ -36,10 +36,41 @@ class _DialofAllState extends State<DialofAll> {
               child: Text("Custom dialog"),
             ),
           ),
+          OutlinedButton(
+              onPressed: () {
+                versionDialog(context);
+              },
+              child: Text("version Dialog"))
         ],
       ),
     );
   }
+}
+
+versionDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: AlertDialog(
+          title: Text("New Version Are Avaliable V-2.3.0 "),
+          content: Text(
+              "Can you get better experience so you can download the new version.\nclick to update"),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Update")),
+          ],
+        ),
+      );
+    },
+  );
 }
 
 customDialog(BuildContext context) {

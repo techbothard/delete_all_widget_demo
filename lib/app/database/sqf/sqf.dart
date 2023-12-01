@@ -11,9 +11,12 @@ import 'package:path/path.dart';
 class SqfDatabase {
   SqfDatabase._();
   static SqfDatabase _database = SqfDatabase._();
-  factory SqfDatabase() => _database;
+  factory SqfDatabase() {
+    print("insert of database");
+    return _database;
+  }
 
-  static Database? _db;
+  Database? _db;
 
   Future<Database> get db async {
     if (_db != null) {
@@ -22,18 +25,49 @@ class SqfDatabase {
     return _db = await init();
   }
 
-  init() async {
+  Future<Database> init() async {
     final path = await getApplicationDocumentsDirectory();
     final data = join(path.path, "DATABASE.db");
-    await openDatabase(data, version: 1, onCreate: oncreate);
+    return await openDatabase(data, version: 1, onCreate: oncreate);
   }
 
   oncreate(Database db, int version) async {
     return db.execute('''
-    CREATE TABLE IF NOT EXIXTS table(
-    ID INTGER PRIMARYKEY,
+    CREATE TABLE IF NOT EXISTS table(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(50),
+    age INTGER(3),
+    city VARCHAR(50),
+    marks VARCHAR(50)
     )
     ''');
+  }
+
+  Future insertData(Map<String, dynamic> map) async {
+    final db = await SqfDatabase().db;
+    final index = await db.insert("table", map); // first method
+    db.rawInsert(
+        "INSERT INTO table (column name)values (column value)"); // secound method
+    print(index);
+  }
+
+  Future<List<Map<String, dynamic>>> getData() async {
+    final db = await SqfDatabase().db;
+    final result = await db.query("table"); //first method
+    db.rawQuery("SELECT * FROM table"); //secound method
+    return result;
+  }
+
+  Future<void> updateData(Map<String, dynamic> map) async {
+    final db = await SqfDatabase().db;
+    await db
+        .update("table", map, where: 'id=?', whereArgs: [map['id']]); // first
+    // db.rawUpdate("UPDATE table SET col1='value'");
+  }
+
+  Future<void> deleteData(int id) async {
+    final db = await SqfDatabase().db;
+    await db.delete("table", where: 'id=?', whereArgs: [id]);
   }
 }
 

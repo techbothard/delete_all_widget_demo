@@ -1,7 +1,14 @@
+import 'dart:io';
+
+import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
+import 'package:delete_all_widget_demo/app/common/pdf_view_screen.dart';
 import 'package:delete_all_widget_demo/app/common/slider_box.dart';
 import 'package:delete_all_widget_demo/app/common/stagger_view.dart';
+import 'package:delete_all_widget_demo/app/common/story_view.dart';
+import 'package:delete_all_widget_demo/app/common/url_launcher.dart';
 import 'package:delete_all_widget_demo/app/database/hive/hive_screen.dart';
 import 'package:delete_all_widget_demo/app/database/sqf/sqf_screen.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../common/bottom_navigation_bar.dart';
@@ -9,7 +16,9 @@ import '../common/button.dart';
 import '../common/dialog_all.dart';
 import '../common/dropdownall.dart';
 import '../common/pay.dart';
+import '../common/shader_mask.dart';
 import '../common/tab_bar.dart';
+import '../common/textfield.dart';
 
 class CommonWidget extends StatefulWidget {
   const CommonWidget({super.key});
@@ -42,7 +51,10 @@ class _CommonWidgetState extends State<CommonWidget> {
                                 ScaffoldMessenger.of(context)
                                     .removeCurrentMaterialBanner();
                               },
-                              child: Text("close"))
+                              child: Text(
+                                "close",
+                                style: TextStyle(color: Colors.white),
+                              ))
                         ]));
                   },
                   child: Text("Material banner")),
@@ -194,7 +206,99 @@ class _CommonWidgetState extends State<CommonWidget> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 fillColor: Colors.orangeAccent,
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UrlLancherScreen(),
+                        ));
+                  },
+                  child: Text("Url Launcher")),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ShaderMaskScreen(),
+                      ));
+                },
+                child: ShaderMask(
+                  shaderCallback: (bounds) {
+                    return LinearGradient(
+                      colors: <Color>[
+                        Colors.purpleAccent.shade700,
+                        Colors.pink.shade700
+                      ],
+                    ).createShader(bounds);
+                  },
+                  child: Text(
+                    "Shader Mask",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        height: 1.5,
+                        fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StoryViewScreen(),
+                      ),
+                    );
+                  },
+                  child: Text("Story Views")),
+              OutlinedButton(
+                  onPressed: () async {
+                    final result = await FilePicker.platform.pickFiles();
+
+                    if (result == null) return;
+                    final pdfPath = result.paths[0];
+                    print("path-${pdfPath}");
+                    await Future.delayed(Duration(seconds: 1));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PdfViewScreen(path: pdfPath!),
+                        ));
+                  },
+                  child: Text("Pdf view-pdfx")),
+              OutlinedButton(
+                  onPressed: () async {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GoogleMapDcreen(),
+                        ));
+                  },
+                  child: Text("Google map marker")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TextInputField(
+                            controller: TextEditingController(),
+                            hintText: "Enter the Password",
+                            validate: (v) {
+                              if (v!.isEmpty) {
+                                return "required";
+                              }
+                              return null;
+                            },
+                            obsecure: true,
+                            suffix: true,
+                            textInputType: TextInputType.visiblePassword,
+                          ),
+                        ));
+                  },
+                  child: Text("Textfield"))
             ],
           ),
         ),
