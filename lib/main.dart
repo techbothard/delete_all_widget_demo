@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'app/all_show_widget/common_widget.dart';
+import 'app/common/audio/dependency.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  // await setupservicelocatore();
   var directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   Hive.registerAdapter(NoteModelAdapter());

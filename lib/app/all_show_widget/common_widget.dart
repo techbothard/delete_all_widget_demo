@@ -1,20 +1,25 @@
 import 'dart:io';
 
+import 'package:delete_all_widget_demo/app/common/calender_task.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
+import 'package:delete_all_widget_demo/app/common/otp_field.dart';
 import 'package:delete_all_widget_demo/app/common/pdf_view_screen.dart';
 import 'package:delete_all_widget_demo/app/common/slider_box.dart';
 import 'package:delete_all_widget_demo/app/common/stagger_view.dart';
+import 'package:delete_all_widget_demo/app/common/state_city_screen.dart';
 import 'package:delete_all_widget_demo/app/common/story_view.dart';
 import 'package:delete_all_widget_demo/app/common/url_launcher.dart';
 import 'package:delete_all_widget_demo/app/database/hive/hive_screen.dart';
 import 'package:delete_all_widget_demo/app/database/sqf/sqf_screen.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../common/bottom_navigation_bar.dart';
 import '../common/button.dart';
 import '../common/dialog_all.dart';
 import '../common/dropdownall.dart';
+import '../common/flip_game.dart';
 import '../common/pay.dart';
 import '../common/shader_mask.dart';
 import '../common/tab_bar.dart';
@@ -35,8 +40,9 @@ class _CommonWidgetState extends State<CommonWidget> {
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Wrap(
+            runSpacing: 10,
+            spacing: 10,
             children: [
               GestureDetector(
                   onTap: () {
@@ -298,7 +304,51 @@ class _CommonWidgetState extends State<CommonWidget> {
                           ),
                         ));
                   },
-                  child: Text("Textfield"))
+                  child: Text("Textfield")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangeNotifierProvider(
+                              create: (context) => FlipGameController(),
+                              builder: (context, child) {
+                                return FlipGame();
+                              }),
+                        ));
+                  },
+                  child: Text("Flip Game")),
+              OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangeNotifierProvider(
+                              create: (context) => CalenderController(),
+                              builder: (context, child) {
+                                return CalenderTaskScreen();
+                              }),
+                        ));
+                  },
+                  child: Text("calender task")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OtpFieldScreen(),
+                        ));
+                  },
+                  child: Text("Otp_feild")),
+              OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StateCityScreen(),
+                        ));
+                  },
+                  child: Text("State city picker  "))
             ],
           ),
         ),

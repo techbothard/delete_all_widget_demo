@@ -153,6 +153,7 @@ class NoteDatabase {
     return result.map((json) => Notes.fromJson(json)).toList();
   }
 
+
   Future<int> update(Notes note) async {
     final db = await instance.database;
 
