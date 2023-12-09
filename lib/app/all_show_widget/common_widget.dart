@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:delete_all_widget_demo/app/common/calender_task.dart';
+import 'package:delete_all_widget_demo/app/common/chat_message.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
 import 'package:delete_all_widget_demo/app/common/otp_field.dart';
 import 'package:delete_all_widget_demo/app/common/pdf_view_screen.dart';
@@ -348,7 +347,17 @@ class _CommonWidgetState extends State<CommonWidget> {
                           builder: (context) => StateCityScreen(),
                         ));
                   },
-                  child: Text("State city picker  "))
+                  child: Text("State city picker  ")),
+              TextButton(
+                  clipBehavior: Clip.hardEdge,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatMessageScreen(),
+                        ));
+                  },
+                  child: Text("Chat App")),
             ],
           ),
         ),
