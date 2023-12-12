@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:delete_all_widget_demo/app/common/calender_task.dart';
 import 'package:delete_all_widget_demo/app/common/chat_message.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
@@ -7,15 +9,19 @@ import 'package:delete_all_widget_demo/app/common/slider_box.dart';
 import 'package:delete_all_widget_demo/app/common/stagger_view.dart';
 import 'package:delete_all_widget_demo/app/common/state_city_screen.dart';
 import 'package:delete_all_widget_demo/app/common/story_view.dart';
+import 'package:delete_all_widget_demo/app/common/test_screen.dart';
 import 'package:delete_all_widget_demo/app/common/url_launcher.dart';
+import 'package:delete_all_widget_demo/app/common/zoom_screen.dart';
 import 'package:delete_all_widget_demo/app/database/hive/hive_screen.dart';
 import 'package:delete_all_widget_demo/app/database/sqf/sqf_screen.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../common/bottom_navigation_bar.dart';
 import '../common/button.dart';
+import '../common/checkbox.dart';
 import '../common/dialog_all.dart';
 import '../common/dropdownall.dart';
 import '../common/flip_game.dart';
@@ -350,14 +356,47 @@ class _CommonWidgetState extends State<CommonWidget> {
                   child: Text("State city picker  ")),
               TextButton(
                   clipBehavior: Clip.hardEdge,
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatMessageScreen(),
-                        ));
+                  onPressed: () async {
+                    final result =
+                        await Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return ChatMessageScreen();
+                      },
+                    ));
+                    print("result are---$result");
                   },
                   child: Text("Chat App")),
+              OutlinedButton(
+                onPressed: () {
+                  if (kDebugMode) {
+                    print("object");
+                    log("Asd");
+                  }
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TestScreen()));
+                },
+                child: Text("Test"),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ZoomScreen(),
+                      ),
+                    );
+                  },
+                  child: Text("Zoom Page")),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return CheckBox_Radio_Screen();
+                    },
+                  ));
+                },
+                child: Text("Check Box"),
+              ),
             ],
           ),
         ),

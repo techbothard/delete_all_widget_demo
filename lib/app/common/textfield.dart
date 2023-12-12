@@ -40,6 +40,9 @@ class TextInputField extends StatelessWidget {
                   onTapOutside: (v) {
                     FocusScope.of(context).unfocus();
                   },
+                  onChanged: (value) {
+                    removeDotIfNoValueAfterIt();
+                  },
                   decoration: InputDecoration(
                       contentPadding:
                           EdgeInsets.only(left: 20, top: 22, bottom: 22),
@@ -176,21 +179,39 @@ class TextInputField extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  try {
-                    final response = await http.get(Uri.parse(
-                        "http://readymadewala.in/flutter_api/blocks_new.php"));
-                    print("statuscode==${response.statusCode}");
-                    print("statuscode==${response.body}");
-                  } catch (e, st) {
-                    throw Exception("$e\n\n$st");
-                  }
-                },
-                child: Text("tap"))
           ],
         ),
       ),
     );
   }
+
+  void removeDotIfNoValueAfterIt() {
+    final String value = controller.text;
+    if (value.isNotEmpty && value[value.length - 1] == '.') {
+      controller.text = value.substring(0, value.length - 1);
+      controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: controller.text.length),
+      );
+    }
+  }
 }
+
+/*
+
+void removeDotIfNoValueAfterIt() {
+  final String value = controller.text;
+  if (keyboardType == TextInputType.number && value.isNotEmpty && value[value.length - 1] == '.') {
+    controller.text = value.substring(0, value.length - 1);
+    controller.selection = TextSelection.fromPosition(
+      TextPosition(offset: controller.text.length),
+    );
+  }
+}
+//secound
+
+    pc.catName.value = TextEditingValue(
+   text: text,
+     selection: TextSelection.collapsed(offset: text.length),
+      );
+
+*/
