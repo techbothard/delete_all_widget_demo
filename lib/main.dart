@@ -1,7 +1,9 @@
+import 'package:delete_all_widget_demo/app/common/pagination/pagination_screen.dart';
 import 'package:delete_all_widget_demo/app/database/hive/model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'app/all_show_widget/common_widget.dart';
 
 void main() async {
@@ -15,7 +17,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

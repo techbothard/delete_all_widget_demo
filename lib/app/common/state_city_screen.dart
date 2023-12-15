@@ -37,7 +37,24 @@ class _StateCityScreenState extends State<StateCityScreen> {
           SizedBox(height: 20),
           OutlinedButton(
               onPressed: _openCountryPickerDialog,
-              child: Text("country_pickers "))
+              child: Text("country_pickers ")),
+          Expanded(
+            child: ListView.builder(
+              shrinkWrap: true,
+              addSemanticIndexes: false,
+              semanticChildCount: 4,
+              itemCount: 10,
+              itemExtent: 50,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.orange,
+                  alignment: Alignment.center,
+                  child: Text(index.toString()),
+                );
+              },
+            ),
+          )
         ],
       ),
     );

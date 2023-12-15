@@ -1,10 +1,16 @@
 import 'dart:developer';
 
+import 'package:delete_all_widget_demo/app/common/bottom_sheet.dart';
 import 'package:delete_all_widget_demo/app/common/calender_task.dart';
+import 'package:delete_all_widget_demo/app/common/carousal_slider_screen.dart';
 import 'package:delete_all_widget_demo/app/common/chat_message.dart';
+import 'package:delete_all_widget_demo/app/common/date_time_screen.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
 import 'package:delete_all_widget_demo/app/common/otp_field.dart';
+import 'package:delete_all_widget_demo/app/common/pagination/animated_ci=ontener_screen.dart';
+import 'package:delete_all_widget_demo/app/common/pagination/pagination_screen.dart';
 import 'package:delete_all_widget_demo/app/common/pdf_view_screen.dart';
+import 'package:delete_all_widget_demo/app/common/responsive_screen.dart';
 import 'package:delete_all_widget_demo/app/common/slider_box.dart';
 import 'package:delete_all_widget_demo/app/common/stagger_view.dart';
 import 'package:delete_all_widget_demo/app/common/state_city_screen.dart';
@@ -18,6 +24,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/breakpoint.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import '../common/bottom_navigation_bar.dart';
 import '../common/button.dart';
@@ -25,8 +33,10 @@ import '../common/checkbox.dart';
 import '../common/dialog_all.dart';
 import '../common/dropdownall.dart';
 import '../common/flip_game.dart';
+import '../common/nested_scrolle_screen.dart';
 import '../common/pay.dart';
 import '../common/shader_mask.dart';
+import '../common/stock_check_screen.dart';
 import '../common/tab_bar.dart';
 import '../common/textfield.dart';
 
@@ -40,6 +50,8 @@ class CommonWidget extends StatefulWidget {
 class _CommonWidgetState extends State<CommonWidget> {
   @override
   Widget build(BuildContext context) {
+    AppSize().init(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -396,6 +408,91 @@ class _CommonWidgetState extends State<CommonWidget> {
                   ));
                 },
                 child: Text("Check Box"),
+              ),
+              RawMaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaginationScreen(),
+                      ));
+                },
+                child: Text("Pagination page"),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return ResponsiveBreakpoints.builder(
+                            child: ResponsiveScreen(),
+                            breakpoints: [
+                              Breakpoint(start: 0, end: 350, name: MOBILE),
+                              Breakpoint(start: 351, end: 600, name: TABLET),
+                              Breakpoint(start: 601, end: 800, name: DESKTOP),
+                              Breakpoint(start: 801, end: 1700, name: "XL")
+                            ]);
+                      },
+                    ));
+                  },
+                  child: Text("Responsive Widget")),
+              OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AnimateContenerScreen(),
+                        ));
+                  },
+                  child: Text("animated container")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomSheetScreen(),
+                        ));
+                  },
+                  child: Text("BottomSheet")),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DateTimeScreen(),
+                      ));
+                },
+                child: Text("Time /date/progressbar"),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.amberAccent)),
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NestedScrolleScreen(),
+                        ));
+                  },
+                  child: Text("NestedScrollerView")),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StockCheckScreen(),
+                        ));
+                  },
+                  child: Text("Stock check")),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CarousalSliderscreen(),
+                      ));
+                },
+                title: Text("Carousal Slider"),
               ),
             ],
           ),

@@ -143,8 +143,6 @@ class _DropDownAllState extends State<DropDownAll> {
     final selectedModel = selectedModelId == null
         ? null
         : models.firstWhere((model) => model.id == selectedModelId);
-    print("As-${selectedModel}");
-
     return DropdownButton<Model>(
       value: selectedModel,
       items: models
