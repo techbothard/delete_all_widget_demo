@@ -1,17 +1,24 @@
 import 'dart:developer';
 
+import 'package:delete_all_widget_demo/app/common/background_service_screen.dart';
 import 'package:delete_all_widget_demo/app/common/bottom_sheet.dart';
 import 'package:delete_all_widget_demo/app/common/calender_task.dart';
 import 'package:delete_all_widget_demo/app/common/carousal_slider_screen.dart';
 import 'package:delete_all_widget_demo/app/common/chat_message.dart';
+import 'package:delete_all_widget_demo/app/common/cv_maker/cv_pdf_view.dart';
 import 'package:delete_all_widget_demo/app/common/date_time_screen.dart';
+import 'package:delete_all_widget_demo/app/common/face/view/splace_screen.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
+import 'package:delete_all_widget_demo/app/common/isolate_screen.dart';
+import 'package:delete_all_widget_demo/app/common/notification.dart';
 import 'package:delete_all_widget_demo/app/common/otp_field.dart';
 import 'package:delete_all_widget_demo/app/common/pagination/animated_ci=ontener_screen.dart';
 import 'package:delete_all_widget_demo/app/common/pagination/pagination_screen.dart';
 import 'package:delete_all_widget_demo/app/common/pdf_view_screen.dart';
 import 'package:delete_all_widget_demo/app/common/responsive_screen.dart';
+import 'package:delete_all_widget_demo/app/common/screenshot_screen.dart';
 import 'package:delete_all_widget_demo/app/common/slider_box.dart';
+import 'package:delete_all_widget_demo/app/common/sound_app_screen.dart';
 import 'package:delete_all_widget_demo/app/common/stagger_view.dart';
 import 'package:delete_all_widget_demo/app/common/state_city_screen.dart';
 import 'package:delete_all_widget_demo/app/common/story_view.dart';
@@ -49,9 +56,22 @@ class CommonWidget extends StatefulWidget {
 
 class _CommonWidgetState extends State<CommonWidget> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    NotificationService().firebaseForground(context);
+    NotificationService().firebaseBackground(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     AppSize().init(context);
-
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -421,18 +441,21 @@ class _CommonWidgetState extends State<CommonWidget> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return ResponsiveBreakpoints.builder(
-                            child: ResponsiveScreen(),
-                            breakpoints: [
-                              Breakpoint(start: 0, end: 350, name: MOBILE),
-                              Breakpoint(start: 351, end: 600, name: TABLET),
-                              Breakpoint(start: 601, end: 800, name: DESKTOP),
-                              Breakpoint(start: 801, end: 1700, name: "XL")
-                            ]);
-                      },
-                    ));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ResponsiveBreakpoints.builder(
+                              child: ResponsiveScreen(),
+                              breakpoints: [
+                                Breakpoint(start: 0, end: 350, name: MOBILE),
+                                Breakpoint(start: 351, end: 600, name: TABLET),
+                                Breakpoint(start: 601, end: 800, name: DESKTOP),
+                                Breakpoint(start: 801, end: 1700, name: "XL")
+                              ]);
+                        },
+                      ),
+                    );
                   },
                   child: Text("Responsive Widget")),
               OutlinedButton(
@@ -494,6 +517,75 @@ class _CommonWidgetState extends State<CommonWidget> {
                 },
                 title: Text("Carousal Slider"),
               ),
+              ListTile(
+                tileColor: Colors.orangeAccent,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => IsolateScreen(),
+                    ),
+                  );
+                },
+                title: Text("isoLate"),
+              ),
+              ListTile(
+                tileColor: Colors.orangeAccent,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BackGroundServiceScreen(),
+                    ),
+                  );
+                },
+                title: Text("backGround Service"),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SoundAppScreen(),
+                        ));
+                  },
+                  child: Text("Sound app")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CVPdfScreen(),
+                        ));
+                  },
+                  child: Text("CV Show")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SplaceScreen(),
+                        ));
+                  },
+                  child: Text("Face Check ")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ));
+                  },
+                  child: Text("Notification show")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ScreenShotScreen(),
+                        ));
+                  },
+                  child: Text("Image SS Share")),
             ],
           ),
         ),

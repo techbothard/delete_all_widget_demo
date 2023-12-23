@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "373449293460",
+    "project_id": "all-widget-demoo",
+    "storage_bucket": "all-widget-demoo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373449293460:android:c4db109a7ff88f1c55be81",
+        "android_client_info": {
+          "package_name": "com.example.delete_all_widget_demoo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtbvLJt4W66L0_kNJfBkxdsMhQYmGBoPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

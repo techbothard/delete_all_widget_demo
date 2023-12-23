@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class BottomSheetScreen extends StatefulWidget {
@@ -46,18 +44,6 @@ class _BottomSheetScreenState extends State<BottomSheetScreen>
   late Animation<double> animation;
   late AnimationController animationController;
   late Animation<double> animationView;
-  bool expanded = false;
-  void toggle() {
-    expanded = !expanded;
-    if (expanded) {
-      animationController.forward();
-    } else {
-      animationController.reverse();
-    }
-    setState(() {});
-
-    print("value-${animation.value}");
-  }
 
   late AnimationController animationController1;
   @override
@@ -151,19 +137,20 @@ class _BottomSheetScreenState extends State<BottomSheetScreen>
                     ),
                   ),
                   Container(
-                      height: 150,
-                      width: double.infinity,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            "assets/images/img_image_2.png",
-                            height: 80,
-                            width: 80,
-                          ),
-                        ],
-                      ))
+                    height: 150,
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          "assets/images/img_image_2.png",
+                          height: 80,
+                          width: 80,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               Container(
@@ -195,64 +182,6 @@ class _BottomSheetScreenState extends State<BottomSheetScreen>
               ),
               ElevatedButton(
                   onPressed: dialoagSheet, child: Text("BottomSheet")),
-              ExpansionTile(
-                title: Text("ExpansionTile"),
-                children: [
-                  Text("There is expansion tile to collapse and expande here"),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "Hide",
-                    textAlign: TextAlign.right,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text("Card and Transform.rotate"),
-                        Spacer(),
-                        Transform.rotate(
-                          angle: expanded ? pi : 0,
-                          child: IconButton(
-                            onPressed: toggle,
-                            icon: Icon(Icons.expand_more),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizeTransition(
-                        sizeFactor: animationView,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Text("ASfgdsas"),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text("ASfgdsas"),
-                              ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text("SizeTranslation"))
-                            ],
-                          ),
-                        ))
-                  ],
-                ),
-              ),
               ReorderableListView(
                 shrinkWrap: true,
                 primary: false,

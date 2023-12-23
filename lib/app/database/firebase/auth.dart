@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthentication {
@@ -75,8 +75,8 @@ class FirebaseAuthentication {
   }
 
   //todo:facebook login
-  Future<UserCredential> signInWithFacebook() async {
-    // flutter_facebook_auth:  dependency add
+/*  Future<UserCredential> signInWithFacebook() async {
+   // flutter_facebook_auth:  dependency add
 
     // Trigger the sign-in flow
     final LoginResult loginResult = await FacebookAuth.instance.login();
@@ -88,6 +88,7 @@ class FirebaseAuthentication {
     // Once signed in, return the UserCredential
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
+  */
 
   // todo: phone authentication
   String otpid = "";

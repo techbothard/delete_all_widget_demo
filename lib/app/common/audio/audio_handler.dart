@@ -5,7 +5,7 @@
 //   return await AudioService.init(
 //       builder: () => MyAudioHandler(),
 //       config: AudioServiceConfig(
-//           androidNotificationChannelId: "com.example.delete_all_widget_demo",
+//           androidNotificationChannelId: "com.example.delete_all_widget_demoo",
 //           androidNotificationChannelName: "Media Notification Demo",
 //           androidResumeOnClick: true,
 //           androidStopForegroundOnPause: true));
