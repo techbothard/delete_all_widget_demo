@@ -56,7 +56,6 @@ class _PaginationScreenState extends State<PaginationScreen> {
 class PaginationController extends ChangeNotifier {
   //for loading and no data
   bool end = false;
-
   bool enter = false;
   void enterLoading(bool c) {
     enter = c;
