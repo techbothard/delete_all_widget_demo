@@ -98,6 +98,7 @@ dependencies:
   local_captcha: ^1.0.1
   screenshot: ^2.1.0
   share_plus: ^7.2.1
+  sizer: ^2.0.15
 
 
 dev_dependencies:

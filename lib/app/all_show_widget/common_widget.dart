@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:delete_all_widget_demo/app/common/background_service_screen.dart';
 import 'package:delete_all_widget_demo/app/common/bottom_sheet.dart';
@@ -26,14 +27,12 @@ import 'package:delete_all_widget_demo/app/common/test_screen.dart';
 import 'package:delete_all_widget_demo/app/common/url_launcher.dart';
 import 'package:delete_all_widget_demo/app/common/zoom_screen.dart';
 import 'package:delete_all_widget_demo/app/database/hive/hive_screen.dart';
-import 'package:delete_all_widget_demo/app/database/sqf/sqf_screen.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/breakpoint.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
-
 import '../common/bottom_navigation_bar.dart';
 import '../common/button.dart';
 import '../common/checkbox.dart';
@@ -71,7 +70,6 @@ class _CommonWidgetState extends State<CommonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    AppSize().init(context);
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -586,6 +584,12 @@ class _CommonWidgetState extends State<CommonWidget> {
                         ));
                   },
                   child: Text("Image SS Share")),
+              SizedBox(
+                height: 20,
+                child: Container(
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ),
