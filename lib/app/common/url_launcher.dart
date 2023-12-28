@@ -155,6 +155,16 @@ class _UrlLancherScreenState extends State<UrlLancherScreen> {
                         "https://play.google.com/store/apps/details?id=com.spaceapegames.beatstar&hl=en&gl=US"));
                   } catch (e) {}
                 }),
+                button("whatsapp  fire", () async {
+                  try {
+                    // whatsapp://send?phone=+91$number&text=$msg
+                    await launchUrl(
+                      Uri.parse("whatsapp://send?link=BYz0qnGMXNo92XuEo2o2fn"),
+                    );
+                  } catch (e) {
+                    print("whatapp error\n$e");
+                  }
+                }),
               ],
             ),
           ),

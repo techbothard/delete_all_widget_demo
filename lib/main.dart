@@ -146,3 +146,33 @@ void setState(VoidCallback fn) {
 //todo:scroller controller time error use this
 //if(!controller.hasClients)return;
 ///gitlab for practise...
+
+//todo :git command
+/*
+git init
+git add .
+git commit -m "commit message"
+git branch -M main/master
+git remote add origin link...
+git push -u origin main/master
+
+git remite -v
+git remote remove origin
+git branch newname..
+git checkout branchname...
+git branch -D branchname..
+
+git status
+git log
+git log --all --graph
+git log --all
+
+git reset .
+
+git config --global user.name "name.."
+git config --global user.email "email.."
+git config --global user.name
+git config --global user.email
+
+
+*/
