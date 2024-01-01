@@ -40,7 +40,41 @@ class _DialofAllState extends State<DialofAll> {
               onPressed: () {
                 versionDialog(context);
               },
-              child: Text("version Dialog"))
+              child: Text("version Dialog")),
+          ElevatedButton(
+              onPressed: () {
+                showGeneralDialog(
+                  barrierDismissible: true,
+                  barrierLabel: " ",
+                  context: context,
+                  barrierColor: Colors.white.withOpacity(.2),
+                  transitionDuration: Duration(milliseconds: 500),
+                  transitionBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return SlideTransition(
+                      position: Tween(begin: Offset(0, 1), end: Offset.zero)
+                          .animate(animation),
+                      child: child,
+                    );
+                  },
+                  pageBuilder: (context, animation, secondaryAnimation) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: EdgeInsets.all(20),
+                          height: 150,
+                          color: Colors.orangeAccent,
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Text("Genral dialog"))
         ],
       ),
     );

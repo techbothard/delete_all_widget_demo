@@ -17,7 +17,7 @@ hive_generator:
 /*
 add create all class field.. and give unique fields id and
 above class name add  .. @HiveType(typeId: 0) ///model name wise unique
- above fields add....@HiveField(0)..unique foe fields.
+ above fields add....@HiveField(0)..unique for fields.
  add this line above class ... part 'note_model.g.dart';
 then run in terminal
 flutter packages pub run build_runner build

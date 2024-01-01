@@ -25,6 +25,7 @@ class TextInputField extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ValueListenableBuilder(
               valueListenable: valunoti,

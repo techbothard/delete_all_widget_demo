@@ -33,18 +33,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/breakpoint.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 import '../common/bottom_navigation_bar.dart';
 import '../common/button.dart';
 import '../common/checkbox.dart';
+import '../common/custome_painter.dart';
 import '../common/dialog_all.dart';
 import '../common/dropdownall.dart';
 import '../common/flip_game.dart';
 import '../common/nested_scrolle_screen.dart';
+import '../common/paralax_effect.dart';
 import '../common/pay.dart';
+import '../common/scffold_screen.dart';
 import '../common/shader_mask.dart';
 import '../common/stock_check_screen.dart';
 import '../common/tab_bar.dart';
 import '../common/textfield.dart';
+import '../common/web_soccet.dart';
 
 class CommonWidget extends StatefulWidget {
   const CommonWidget({super.key});
@@ -584,6 +589,64 @@ class _CommonWidgetState extends State<CommonWidget> {
                         ));
                   },
                   child: Text("Image SS Share")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ExampleParallax(),
+                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     PageRouteBuilder(
+                    //       pageBuilder:
+                    //           (context, animation, secondaryAnimation) {
+                    //         return ExampleParallax();
+                    //       },
+                    //       transitionsBuilder:
+                    //           (context, animation, secondaryAnimation, child) {
+                    //         return FadeTransition(
+                    //           opacity: animation,
+                    //           child: child,
+                    //         );
+                    //       },
+                    //       opaque: false,
+                    //       barrierColor: null,
+                    //       barrierLabel: null,
+                    //       maintainState: true,
+                    //       transitionDuration: Duration(milliseconds: 500),
+                    //     ));
+                  },
+                  child: Text("Paralax Effect")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WebSoccetScreen(),
+                        ));
+                  },
+                  child: Text("Web Socket")),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CutomPainterScreen(),
+                      ));
+                },
+                child: Text("Custom Painters"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ScaffoldScreen(),
+                      ));
+                },
+                child: Text("Scafflod "),
+              ),
               SizedBox(
                 height: 20,
                 child: Container(

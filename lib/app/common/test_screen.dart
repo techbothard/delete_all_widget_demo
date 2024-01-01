@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatefulWidget {
@@ -58,6 +59,36 @@ class _TestScreenState extends State<TestScreen> {
               SizedBox(
                 height: 30,
               ),
+              Container(
+                height: 100,
+                child: Stack(
+                  children: [
+                    IgnorePointer(
+                      ignoring: isLoading,
+                      child: GestureDetector(
+                        onTap: () {
+                          print("ASd");
+                        },
+                        child: Container(
+                          color: Colors.orange,
+                          height: 90,
+                          width: 250,
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: isLoading,
+                      child: Container(
+                        alignment: Alignment.center,
+                        color: const Color(0x80000000),
+                        child: CupertinoActivityIndicator(
+                          radius: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               ElevatedButton(
                   style: ButtonStyle(backgroundColor:
                       MaterialStateProperty.resolveWith((states) {
@@ -69,7 +100,11 @@ class _TestScreenState extends State<TestScreen> {
                       return Colors.orange;
                     }
                   })),
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      isLoading = !isLoading;
+                    });
+                  },
                   child: Text("Submit"))
             ],
           ),
@@ -77,6 +112,8 @@ class _TestScreenState extends State<TestScreen> {
       ),
     );
   }
+
+  bool isLoading = true;
 }
 
 class TextInputFlds extends StatelessWidget {
