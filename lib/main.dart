@@ -163,9 +163,10 @@ git branch -M main/master
 git remote add origin link...
 git push -u origin main/master
 
-git remite -v
+git remote -v
 git remote remove origin
 git branch newname..
+git checkout -b newname.. //create the new branch and that branch are open
 git checkout branchname...
 git branch -D branchname..
 
