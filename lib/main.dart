@@ -190,6 +190,8 @@ git push -u origin branchname
 if pullrequirest merge in main then get code in local write
 //git pull origin main
 
+//git diff main
+//git merge main
 
 */
 // aasdasd
