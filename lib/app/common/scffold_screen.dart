@@ -22,7 +22,26 @@ class _ScaffoldScreenState extends State<ScaffoldScreen> {
               onPressed: () {
                 APIDataCall().getApiCall();
               },
-              child: Text("data"))
+              child: Text("data")),
+          GestureDetector(
+            onTap: () {
+              print("asd");
+            },
+            child: IgnorePointer(
+              ignoring: false,
+              child: FloatingActionButton.extended(
+                onPressed: () {
+                  print("hey");
+                },
+                label: Text("Bradcast"),
+                icon: Image.asset(
+                  "assets/icons/insta.gif",
+                  width: 30,
+                  height: 30,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
