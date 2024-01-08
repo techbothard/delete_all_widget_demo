@@ -182,6 +182,13 @@ git config --global user.email "email.."
 git config --global user.name
 git config --global user.email
 
+//todo:creat the new branch push the github
+git add .
+git commit -m " sdf"
+git push -u origin branchname
+//then pull request create and seniour developer merge and cancel the pull requiest.
+if pullrequirest merge in main then get code in local write
+//git pull origin main
 
 */
 // aasdasd
