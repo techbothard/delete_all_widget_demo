@@ -23,8 +23,7 @@ class _TestScreenState extends State<TestScreen> {
       appBar: AppBar(
         title: Text("Test_screen"),
       ),
-      body: Container(
-        alignment: Alignment.center,
+      body: SingleChildScrollView(
         child: Form(
           key: fk,
           onChanged: () {},
@@ -105,7 +104,7 @@ class _TestScreenState extends State<TestScreen> {
                       isLoading = !isLoading;
                     });
                   },
-                  child: Text("Submit"))
+                  child: Text("Submit")),
             ],
           ),
         ),
