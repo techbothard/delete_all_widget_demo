@@ -638,7 +638,7 @@ class _CommonWidgetState extends State<CommonWidget> {
                 child: Text("Custom Painters"),
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
