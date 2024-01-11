@@ -48,6 +48,7 @@ import '../common/scffold_screen.dart';
 import '../common/shader_mask.dart';
 import '../common/stock_check_screen.dart';
 import '../common/tab_bar.dart';
+import '../common/task.dart';
 import '../common/textfield.dart';
 import '../common/web_soccet.dart';
 
@@ -646,6 +647,19 @@ class _CommonWidgetState extends State<CommonWidget> {
                       ));
                 },
                 child: Text("Scafflod "),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(
+                          create: (context) => GridCountController(),
+                          builder: (context, child) => TaskScreen(),
+                        ),
+                      ));
+                },
+                child: Text("TASK "),
               ),
               SizedBox(
                 height: 20,
