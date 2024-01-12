@@ -11,6 +11,7 @@ import 'package:delete_all_widget_demo/app/common/date_time_screen.dart';
 import 'package:delete_all_widget_demo/app/common/face/view/splace_screen.dart';
 import 'package:delete_all_widget_demo/app/common/google_map_screen.dart';
 import 'package:delete_all_widget_demo/app/common/isolate_screen.dart';
+import 'package:delete_all_widget_demo/app/common/localization/localization_screen.dart';
 import 'package:delete_all_widget_demo/app/common/notification.dart';
 import 'package:delete_all_widget_demo/app/common/otp_field.dart';
 import 'package:delete_all_widget_demo/app/common/pagination/animated_ci=ontener_screen.dart';
@@ -660,6 +661,16 @@ class _CommonWidgetState extends State<CommonWidget> {
                       ));
                 },
                 child: Text("TASK "),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LocalizationScreen(),
+                      ));
+                },
+                child: Text("Localization "),
               ),
               SizedBox(
                 height: 20,
