@@ -139,6 +139,7 @@ flutter:
     - lib/assets/images/
     - lib/assets/song/
     - lib/app/common/face/assets/images/
+    - lib/app/common/localization/local/
     
     #   - images/a_dot_ham.jpeg
 

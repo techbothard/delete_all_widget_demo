@@ -667,10 +667,7 @@ class _CommonWidgetState extends State<CommonWidget> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChangeNotifierProvider(
-                          create: (context) => HomeLocalController(),
-                          builder: (context, child) => LocalizationScreen(),
-                        ),
+                        builder: (context) => LocalizationScreen(),
                       ));
                 },
                 child: Text("Localization "),

@@ -24,10 +24,9 @@ class _LocalizationScreenState extends State<LocalizationScreen> {
             DropdownButton<LanguageModel>(
               underline: const SizedBox(),
               // padding: EdgeInsets.zero,
-              icon: Image.asset(
-                "assets/images/language.png",
-                height: 30,
-                color: Colors.white,
+              icon: Icon(
+                Icons.translate,
+                size: 25,
               ),
               onChanged: (LanguageModel? newValue) {
                 context

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:delete_all_widget_demo/app/common/localization/localization_screen.dart';
 import 'package:delete_all_widget_demo/app/database/hive/model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'app/all_show_widget/common_widget.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
 import 'package:delete_all_widget_demo/app/common/notification.dart';
@@ -62,18 +64,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        AppLocalization.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('hi', 'IN'),
-      ],
-      home: CommonWidget(),
+    return ChangeNotifierProvider(
+      create: (context) => HomeLocalController(),
+      builder: (context, child) => MaterialApp(
+        locale: context.watch<HomeLocalController>().locale,
+        localeResolutionCallback: (deviceLocale, supportedLocales) {
+          for (var locale in supportedLocales) {
+            if (locale.languageCode == deviceLocale!.languageCode &&
+                locale.countryCode == deviceLocale.countryCode) {
+              return deviceLocale;
+            }
+          }
+          return supportedLocales.first;
+        },
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          AppLocalization.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('hi', 'IN'),
+        ],
+        home: CommonWidget(),
+      ),
     );
   }
 }
